@@ -7,6 +7,7 @@ use App\Models\Pessoa;
 use App\Http\Requests\StorePessoaRequest;
 use App\Http\Requests\UpdatePessoaRequest;
 use App\Http\Resources\PessoaResource;
+use Illuminate\Http\Request;
 
 class PessoaController extends Controller
 {
@@ -17,9 +18,8 @@ class PessoaController extends Controller
      */
     public function index()
     {
-        return PessoaResource::collection(Pessoa::all());
+        return PessoaResource::collection(Pessoa::orderBy('id', 'desc')->get());
     }
-
 
     /**
      * Store a newly created resource in storage.
